@@ -1,6 +1,7 @@
 import { AlertifyService } from './../_services/alertify.service';
 import { AuthService } from './../_services/auth.service';
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
+import { HttpErrorResponse, HttpResponse, HttpHeaderResponse } from '@angular/common/http';
 
 @Component({
   selector: 'app-register',
@@ -17,10 +18,11 @@ export class RegisterComponent implements OnInit {
   }
   register() {
     this.authService.register(this.model)
-      .subscribe(() => {
+      .subscribe((response) => {
+        console.log('registerComponent: '+ response)
         this.alertify.success('registration successfull');
-      }, error => {
-        this.alertify.error(error);
+      }, (error) => {
+        this.alertify.error(`${error}`);
       });
   }
   cancel() {

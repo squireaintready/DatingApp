@@ -1,3 +1,7 @@
+nav {
+    padding: .7rem ;
+}
+
 .dropdown-toggle, .dropdown-item {
     cursor: pointer;
 }
